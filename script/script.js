@@ -31,6 +31,7 @@ if (closeOverlay) {
 if (overlay) {
     overlay.addEventListener('click', (e) => {
         const pressFeedback = feedback.contains(e.target);
+
         if (!pressFeedback) {
             console.log("закрытие по оверлею");
             overlay.classList.remove('overlay_show');
@@ -56,10 +57,11 @@ if (labelBurger) {
     });
 }
 
-//------------------------------фон для шапки при скроле-----------------------------------------------
+//---------------------появление фонф шапки при скроле-----------------------------------------------
 
 window.addEventListener('scroll', function() {
     const headColor = document.querySelector('.header');
+
     if (document.body.scrollTop > 1 || document.documentElement.scrollTop > 1) {
         headColor.classList.add('header__move');
     } else {
@@ -67,13 +69,19 @@ window.addEventListener('scroll', function() {
     }
 });
 
-//-------------------------------------------------------------------------------------
+//---------------------параллакс фона в главном блоке----------------------------------------------
 
+const backgroundMove = document.querySelector('.main-block__background');
+const block = document.querySelector('.main-block');
 
+block.addEventListener('mousemove', function(e) {
+    console.log("параллакс");
+    let x = e.clientX / window.innerWidth;
+    let y = e.clientY / window.innerHeight;
+    backgroundMove.style.transform = 'translate(-' + x * 50 + 'px, -' + y * 50 + 'px)';
+});
 
-
-
-
+//-----------------------------------------------------------------------------------
 
 
 
