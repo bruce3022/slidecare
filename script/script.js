@@ -49,7 +49,7 @@ const menuBurger = document.querySelector('.js-burger__menu-open');
 const burgerBack = document.querySelector('.burger__background');
 
 if (labelBurger) {
-    labelBurger.addEventListener('click', function (e) {
+    labelBurger.addEventListener('click', (e) => {
         iconBurger.classList.toggle('burger__icon-open');
         menuBurger.classList.toggle('burger__menu-open');
         burgerBack.classList.toggle('burger__background-open');
@@ -59,7 +59,7 @@ if (labelBurger) {
 
 //---------------------появление фонф шапки при скроле-----------------------------------------------
 
-window.addEventListener('scroll', function() {
+window.addEventListener('scroll', () => {
     const headColor = document.querySelector('.header');
 
     if (document.body.scrollTop > 1 || document.documentElement.scrollTop > 1) {
@@ -74,7 +74,7 @@ window.addEventListener('scroll', function() {
 const backgroundMove = document.querySelector('.main-block__background');
 const block = document.querySelector('.main-block');
 
-block.addEventListener('mousemove', function(e) {
+block.addEventListener('mousemove', (e) => {
     console.log("параллакс");
     let x = e.clientX / window.innerWidth;
     let y = e.clientY / window.innerHeight;
