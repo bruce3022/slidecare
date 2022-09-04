@@ -42,20 +42,16 @@ h6 {
 
 html,
 body {
-    height: 100%;
-    line-height: 1.3;
-}
-
-/*------------------------------------------------*/
-
-html,
-body {
     width: 100%;
     height: 100vh;
     line-height: 1.3;
-    color: #181818;  /*свойства которые наследуются*/
-    scroll-behavior: smooth;
 }
+
+html {
+    scroll-behavior: smooth !important;
+}
+
+/*------------------------------------------------*/
 
 .body__burger-lock {
     overflow: hidden;  /*запрещаем прокрутку контента сайта при открытом меню-бургер*/
@@ -66,13 +62,11 @@ body.block {
     padding-right: 17px; /*при открытии модального окна не будет происходить смещение вправо*/
 }
 
-/*.container {
-    max-width: 1390px;
-    margin: 0 auto;   !*выстраивает блок по центру*!
-    padding-right: 15px;
-    padding-left: 15px;
-    overflow: hidden;
-}*/
+@media (max-width: 1023px) {
+    body.block {
+        padding-right: 0;
+    }
+}
 
 .container {
     max-width: 1320px;
@@ -90,6 +84,7 @@ body.block {
 
 @media (max-width: 1023px) {
     .container {
+        max-width: 100%;
         padding: 0 24px;
         overflow: hidden;
     }
@@ -97,6 +92,7 @@ body.block {
 
 @media (max-width: 375px) {
     .container {
+        max-width: 100%;
         padding: 0 16px;
         overflow: hidden;
     }
@@ -109,6 +105,16 @@ body.block {
     padding: 10px 0;
     z-index: 10;
     transition: background-color 0.5s ease;
+}
+
+.header_padding {
+    padding-right: 17px;
+}
+
+@media (max-width: 1023px) {
+    .header_padding {
+        padding-right: 0;
+    }
 }
 
 .header__move {
@@ -216,21 +222,23 @@ body.block {
     }
 
     .burger__background {
-        visibility: hidden;
         display: block;
         position: fixed;
-        left: 0;
         top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0);
         overflow-y: auto;
         overflow-x: hidden;
+        transition: 500ms;
+        visibility: hidden;
     }
 
     .burger__background-open {
-        visibility: visible;
         z-index: 11;
+        background: rgba(0, 0, 0, 0.5);
+        visibility: visible;
     }
 
     .burger__menu {
@@ -239,7 +247,7 @@ body.block {
         flex-direction: column;
         justify-content: space-between;
         top: 0;
-        right: -1000%;
+        right: -100%;
         padding: 140px 60px 60px 60px;
         background-color: #1e9d90;
         z-index: 12;
@@ -247,6 +255,7 @@ body.block {
         height: 100vh;
         overflow-y: auto;
         overflow-x: hidden;
+        transition: 500ms;
     }
 
     .burger__menu-open {
@@ -321,7 +330,7 @@ body.block {
     background-size: 120%;
     left: -5%;
     top: -5%;
-    transition: all 0.1s ease;
+    /*transition: all 0.1s ease;*/
 }
 
 .main-block__container {
@@ -389,7 +398,7 @@ body.block {
 }
 
 /*------------------------about---------------------------*/
-.about {
+#about {
     margin-bottom: 180px;
 }
 
@@ -596,7 +605,7 @@ body.block {
 }
 
 /*------------------------------work-------------------------------*/
-.work {
+#work {
     margin-bottom: 180px;
 }
 
@@ -654,7 +663,7 @@ body.block {
 }
 
 /*------------------------------projects---------------------------------*/
-.projects {
+#projects {
     margin-bottom: 180px;
 }
 
@@ -766,7 +775,7 @@ body.block {
 }
 
 /*-------------------------prices----------------------------------*/
-.prices {
+#prices {
     margin-bottom: 180px;
 }
 
@@ -886,7 +895,7 @@ body.block {
 }
 
 /*-----------------------------partners-----------------------------------*/
-.partners {
+#partners {
     margin-bottom: 100px;
 }
 
@@ -1061,9 +1070,10 @@ body.block {
     background-position: 0 100%;
 }
 
-.footer__sub img {
+.footer__logo {
     width: 60px;
     height: 60px;
+    cursor: pointer;
 }
 
 .footer__middle {
