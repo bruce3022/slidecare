@@ -2,21 +2,23 @@
 
 const overlay = document.querySelector('.js-overlay');
 const closeOverlay = document.querySelector('.js-feedback__close');
-const openOverlay = document.querySelectorAll('.js-overlay-open');
+const openOverlays = document.querySelectorAll('.js-overlay-open');
 const feedback = document.querySelector('.feedback');
 const header = document.querySelector('.header');
+const paddingOffset = window.innerWidth - document.body.offsetWidth + 'px';
 /*const itemBtn = document.querySelector('.details-page__btn');
 const popBody = document.querySelector('.popup__body');
 const popup = document.querySelector('.popup__content');*/
 
 //открытие попап окна
-openOverlay.forEach((openOverlay) => {
+openOverlays.forEach((openOverlay) => {
     openOverlay.addEventListener('click', () => {
-        console.log("forEach worked");
         overlay.classList.add('overlay_show');
         feedback.classList.add('feedback_show');
+        document.body.style.paddingRight = paddingOffset;
+        header.style.paddingRight = paddingOffset;
         document.body.classList.add('block');
-        header.classList.add('header_padding');
+        //header.classList.add('header_padding');
     });
 });
 
@@ -25,12 +27,14 @@ if (closeOverlay) {
     closeOverlay.addEventListener('click', () => {
         overlay.classList.remove('overlay_show');
         feedback.classList.remove('feedback_show');
+        document.body.style.paddingRight = '0px';
+        header.style.paddingRight = '0px';
         document.body.classList.remove('block');
-        header.classList.remove('header_padding');
+        //header.classList.remove('header_padding');
     });
 }
 
-const div = {
+/*const div = {
     classList: {
         add: function (value) { this.list.push(value); console.log('push ' + value ) },
         list: []
@@ -67,7 +71,7 @@ class NewElementPIV {
 }
 
 const PIV = new NewElementPIV(50);
-const PIV_2 = new NewElementPIV(200);
+const PIV_2 = new NewElementPIV(200);*/
 
 
 /*
@@ -101,7 +105,7 @@ const newCar = new Car(20);
 
 */
 
-const car = {
+/*const car = {
     maxSpeed: 20,
     currentSpeed: 0,
     distance: 0,
@@ -123,7 +127,7 @@ const car = {
 
         this.timer = setInterval(() => this.drive(this.currentSpeed), 1000);
     }
-}
+}*/
 
 
 //закрытие по оверлею
@@ -132,11 +136,12 @@ if (overlay) {
         const pressFeedback = feedback.contains(e.target);
 
         if (!pressFeedback) {
-            console.log("закрытие по оверлею");
             overlay.classList.remove('overlay_show');
             feedback.classList.remove('feedback_show');
+            document.body.style.paddingRight = '0px';
+            header.style.paddingRight = '0px';
             document.body.classList.remove('block');
-            header.classList.remove('header_padding');
+            //header.classList.remove('header_padding');
         };
     });
 }
@@ -153,20 +158,30 @@ if (labelBurger) {
         iconBurger.classList.toggle('burger__icon-open');
         menuBurger.classList.toggle('burger__menu-open');
         burgerBack.classList.toggle('burger__background-open');
-        document.body.classList.toggle('body__burger-lock');
+        document.body.classList.toggle('lock');
         header.classList.toggle('header_padding');
     });
 }
 
+if (burgerBack) {
+    burgerBack.addEventListener('click', (e) => {
+        iconBurger.classList.remove('burger__icon-open');
+        menuBurger.classList.remove('burger__menu-open');
+        burgerBack.classList.remove('burger__background-open');
+        document.body.classList.remove('lock');
+        header.classList.remove('header_padding');
+    });
+}
+
+
 //---------------------появление фонф шапки при скроле-----------------------------------------------
 
 window.addEventListener('scroll', () => {
-    const headColor = document.querySelector('.header');
 
     if (document.body.scrollTop > 1 || document.documentElement.scrollTop > 1) {
-        headColor.classList.add('header__move');
+        header.classList.add('header_move');
     } else {
-        headColor.classList.remove('header__move');
+        header.classList.remove('header_move');
     }
 });
 
@@ -176,7 +191,6 @@ const backgroundMove = document.querySelector('.main-block__background');
 const mainBlock = document.querySelector('.main-block');
 
 mainBlock.addEventListener('mousemove', (e) => {
-    console.log("параллакс");
 
     let x = e.clientX / window.innerWidth; // полная ширина окна - относительно окна браузера
  // let x = e.pageX / document.documentElement.clientWidth; // ширина окна за вычетом полосы прокрутки - относительно документа
@@ -184,12 +198,9 @@ mainBlock.addEventListener('mousemove', (e) => {
     backgroundMove.style.transform = 'translate(-' + x * 50 + 'px, -' + y * 50 + 'px)';
 });
 
-//-----------------------------------------------------------------------------------
+//-----------------------параллакс фона а хедере-----------------------------------------------------------
 
-const headerBlock = document.querySelector('.header');
-
-headerBlock.addEventListener('mousemove', (e) => {
-    console.log("параллакс");
+header.addEventListener('mousemove', (e) => {
 
     let x = e.clientX / window.innerWidth; // полная ширина окна
     let y = e.clientY / window.innerHeight;
@@ -203,7 +214,6 @@ const logoUp = document.querySelector('.footer__logo');
 
 if (logoUp) {
     logoUp.addEventListener('click', (e) => {
-        console.log('возврат наверх');
 
         window.scrollTo({
             top: 0,
@@ -218,7 +228,7 @@ const menuLinks = document.querySelectorAll('a[data-id]');
 
 menuLinks.forEach((menuLink) => {
     menuLink.addEventListener('click', (e) => {
-        console.log('прокрутка до нужного блока');
+
         e.preventDefault();
 
         const sectionName = menuLink.getAttribute('data-id');
@@ -236,11 +246,7 @@ menuLinks.forEach((menuLink) => {
 
 //------------------------------------------------------------------------------------
 
-
-
-
-
-
+//const scrollBar = new SimpleBar(document.getElementById('myElement'), { autoHide: false });
 
 
 

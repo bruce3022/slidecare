@@ -9,16 +9,18 @@
     <script async src="../script/script.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css">
+    <script async src="https://unpkg.com/simplebar@latest/dist/simplebar.min.js"></script>
 </head>
 <body>
-    <div class="scrollbar">
+    <div class="scrollbar" id="myElement" data-simplebar>
         <header class="header">
             <div class="container">
                 <div class="header__container">
                     <div class="header__logo">
                         <picture>
                             <source srcset="../images/logo.png" type="image/png" media="(min-width: 1201px)">
-                            <source srcset="../images/logo1.png" type="image/png" media="(max-width: 1200px)">
+                            <source srcset="../images/logo1.png" type="image/png" media="(max-width: 1201px)">
                             <img src="../images/logo.png" alt="">
                         </picture>
                     </div>
@@ -130,14 +132,16 @@
                         <p class="green__opacity">реализовано нашими специалистами</p>
                     </div>
                     <div class="about__white">
-                        <p class="white__text">SlideCare - то платформа, объединяющая клиентов
-                            с высококвалифицированными фрилансерами - дизайнерами PowerPoint.</p>
-                        <p class="white__text">Наша миссия - создавать убедительный и современный информационный дизайн для
-                            решения конкретных
-                            бизнес-задач.</p>
-                        <p class="white__text">Наша цель - помогать бизнесу и профессионалам в развитии их бизнеса и
-                            достижении желаемого
-                            результата от каждой презентации.</p>
+                        <div class="about__white__content">
+                            <p class="white__text">SlideCare - то платформа, объединяющая клиентов
+                                с высококвалифицированными фрилансерами - дизайнерами PowerPoint.</p>
+                            <p class="white__text">Наша миссия - создавать убедительный и современный информационный дизайн для
+                                решения конкретных
+                                бизнес-задач.</p>
+                            <p class="white__text">Наша цель - помогать бизнесу и профессионалам в развитии их бизнеса и
+                                достижении желаемого
+                                результата от каждой презентации.</p>
+                        </div>
                     </div>
                     <div class="about__left-green">
                         <p class="left-green__number green__number">12</p>
@@ -253,14 +257,14 @@
                             <p>Онлайн-презентация стратегии развития холдинга</p>
                         </div>
                     </a>
-                    <a href="#" class=" project__link project__link_mini">
+                    <a href="#" class="project__link_mini">
                         <img class="project__img" src="../images/project2.png" alt="">
                         <div class="project__text">
                             <h3>GOOGLE</h3>
                             <p>Онлайн-презентация стратегии развития холдинга</p>
                         </div>
                     </a>
-                    <a href="#" class=" project__link project__link_mini">
+                    <a href="#" class="project__link_mini">
                         <img class="project__img" src="../images/project3.png" alt="">
                         <div class="project__text">
                             <h3>РОСТЕЛЕКОМ</h3>
@@ -274,14 +278,14 @@
                             <p>Онлайн-презентация стратегии развития холдинга</p>
                         </div>
                     </a>
-                    <a href="#" class="project__link">
+                    <a href="#" class="project__link project__link_hide">
                         <img class="project__img" src="../images/project5.png" alt="">
                         <div class="project__text">
                             <h3>МТС</h3>
                             <p>Онлайн-презентация стратегии развития холдинга</p>
                         </div>
                     </a>
-                    <a href="#" class=" project__link project__link_mini">
+                    <a href="#" class="project__link_mini project__link_mini_hide">
                         <img class="project__img" src="../images/project6.png" alt="">
                         <div class="project__text">
                             <h3>ЗВЕЗДНЫЕ ВОЙНЫ</h3>
